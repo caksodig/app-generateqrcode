@@ -14,7 +14,7 @@ Aplikasi web sederhana untuk menghasilkan QR Code dari URL menggunakan Next.js, 
 
 ## Demo
 
-[Link Demo Aplikasi](#) 
+[Link Demo Aplikasi](https://app-generateqrcode.vercel.app/) 
 
 ## Teknologi yang Digunakan
 
