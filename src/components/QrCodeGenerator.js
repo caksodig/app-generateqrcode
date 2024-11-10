@@ -19,9 +19,9 @@ const QRCodeGenerator = () => {
   const [size, setSize] = useState("300");
   const [error, setError] = useState("");
   const [history, setHistory] = useState([]);
+  const [isValidatedUrl, setIsValidatedUrl] = useState(false);
   const qrRef = useRef();
 
-  // Load history from localStorage on component mount
   useEffect(() => {
     const savedHistory = localStorage.getItem("qrHistory");
     if (savedHistory) {
@@ -29,19 +29,29 @@ const QRCodeGenerator = () => {
     }
   }, []);
 
-  // URL validation function
+  // Enhanced URL validation
   const isValidUrl = (string) => {
     try {
-      new URL(string);
-      return true;
+      const url = new URL(string);
+      // Check if protocol is http or https
+      return url.protocol === "http:" || url.protocol === "https:";
     } catch (_) {
       return false;
     }
   };
 
+  // Validate URL as user types
+  const handleUrlChange = (e) => {
+    const newUrl = e.target.value;
+    setUrl(newUrl);
+    setError("");
+    setIsValidatedUrl(false);
+  };
+
   const generateQRCode = () => {
     if (!url) {
       setError("URL tidak boleh kosong");
+      setIsValidatedUrl(false);
       return;
     }
 
@@ -49,12 +59,14 @@ const QRCodeGenerator = () => {
       setError(
         "URL tidak valid. Pastikan dimulai dengan http:// atau https://"
       );
+      setIsValidatedUrl(false);
       return;
     }
 
     setError("");
+    setIsValidatedUrl(true);
 
-    // Add to history
+    // Add to history only if URL is valid
     const newHistory = [
       { url, date: new Date().toLocaleString(), size },
       ...history.slice(0, 9),
@@ -64,12 +76,9 @@ const QRCodeGenerator = () => {
   };
 
   const downloadQRCode = () => {
-    if (!qrRef.current) return;
+    if (!qrRef.current || !isValidatedUrl) return;
 
-    // Get SVG element
     const svg = qrRef.current;
-
-    // Create canvas
     const canvas = document.createElement("canvas");
     const ctx = canvas.getContext("2d");
     const data = new XMLSerializer().serializeToString(svg);
@@ -103,6 +112,8 @@ const QRCodeGenerator = () => {
   const loadFromHistory = (historyItem) => {
     setUrl(historyItem.url);
     setSize(historyItem.size);
+    // Validate URL from history
+    setIsValidatedUrl(isValidUrl(historyItem.url));
   };
 
   const clearHistory = () => {
@@ -129,9 +140,9 @@ const QRCodeGenerator = () => {
             <div className="space-y-2">
               <Input
                 type="url"
-                placeholder="Masukkan URL disini..."
+                placeholder="Masukkan URL disini... (contoh: https://www.example.com)"
                 value={url}
-                onChange={(e) => setUrl(e.target.value)}
+                onChange={handleUrlChange}
                 className="w-full"
               />
 
@@ -155,7 +166,7 @@ const QRCodeGenerator = () => {
               </Button>
             </div>
 
-            {url && (
+            {isValidatedUrl && (
               <div className="space-y-4">
                 <div className="flex justify-center">
                   <div className="border border-gray-200 rounded-lg p-4 bg-white">
@@ -163,7 +174,7 @@ const QRCodeGenerator = () => {
                       ref={qrRef}
                       value={url}
                       size={parseInt(size)}
-                      level="H" // Highest error correction
+                      level="H"
                       includeMargin={true}
                     />
                   </div>
