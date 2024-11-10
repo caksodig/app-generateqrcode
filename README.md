@@ -27,12 +27,14 @@ Aplikasi web sederhana untuk menghasilkan QR Code dari URL menggunakan Next.js, 
 ## Cara Menjalankan Secara Lokal
 
 1. Clone repository
+
 ```bash
 git clone https://github.com/username/qr-code-generator.git
 cd qr-code-generator
 ```
 
 2. Install dependencies
+
 ```bash
 npm install
 # atau
@@ -40,6 +42,7 @@ yarn install
 ```
 
 3. Install shadcn/ui components yang diperlukan
+
 ```bash
 npx shadcn-ui@latest add card
 npx shadcn-ui@latest add input
@@ -49,6 +52,7 @@ npx shadcn-ui@latest add select
 ```
 
 4. Jalankan development server
+
 ```bash
 npm run dev
 # atau
