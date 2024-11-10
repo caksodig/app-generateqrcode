@@ -1,10 +1,10 @@
-'use client'
+"use client";
 import React, { useState, useEffect, useRef } from "react";
 import { QRCodeSVG } from "qrcode.react";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Alert, AlertDescription } from "@/components/ui/alert";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import {
   Select,
   SelectContent,
@@ -124,7 +124,7 @@ const QRCodeGenerator = () => {
   return (
     <div className="min-h-screen bg-gray-100 p-4 md:py-12">
       <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-4">
-        {/* Generator Section */}
+        {/* Generator section */}
         <Card className="w-full">
           <CardHeader>
             <CardTitle className="text-center">QR Code Generator</CardTitle>
@@ -133,6 +133,7 @@ const QRCodeGenerator = () => {
             {error && (
               <Alert variant="destructive">
                 <AlertCircle className="h-4 w-4" />
+                <AlertTitle>Error</AlertTitle>
                 <AlertDescription>{error}</AlertDescription>
               </Alert>
             )}
