@@ -1,36 +1,91 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# QR Code Generator Web App
 
-## Getting Started
+Aplikasi web sederhana untuk menghasilkan QR Code dari URL menggunakan Next.js, Tailwind CSS, dan qrcode.react.
 
-First, run the development server:
+## Fitur
 
+- ✨ Generate QR Code dari URL
+- 📏 Kustomisasi ukuran QR Code
+- 📥 Download QR Code sebagai PNG
+- 📱 Responsive design (Mobile & Desktop)
+- 🔍 Validasi URL
+- 📖 Riwayat generate QR Code
+- 💾 Penyimpanan lokal untuk riwayat
+
+## Demo
+
+[Link Demo Aplikasi](#) 
+
+## Teknologi yang Digunakan
+
+- [Next.js](https://nextjs.org/)
+- [React](https://reactjs.org/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [shadcn/ui](https://ui.shadcn.com/)
+- [qrcode.react](https://npmjs.com/package/qrcode.react)
+
+## Cara Menjalankan Secara Lokal
+
+1. Clone repository
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/username/qr-code-generator.git
+cd qr-code-generator
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Install dependencies
+```bash
+npm install
+# atau
+yarn install
+```
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+3. Install shadcn/ui components yang diperlukan
+```bash
+npx shadcn-ui@latest add card
+npx shadcn-ui@latest add input
+npx shadcn-ui@latest add button
+npx shadcn-ui@latest add alert
+npx shadcn-ui@latest add select
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+4. Jalankan development server
+```bash
+npm run dev
+# atau
+yarn dev
+```
 
-## Learn More
+5. Buka [http://localhost:3000](http://localhost:3000) di browser
 
-To learn more about Next.js, take a look at the following resources:
+## Struktur Proyek
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+qr-code-generator/
+├── app/
+│   ├── layout.tsx
+│   └── page.tsx
+├── components/
+│   └── QRCodeGenerator.tsx
+├── public/
+├── styles/
+│   └── globals.css
+├── .gitignore
+├── next.config.js
+├── package.json
+├── postcss.config.js
+├── README.md
+├── tailwind.config.js
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Deployment
 
-## Deploy on Vercel
+Aplikasi ini bisa di-deploy menggunakan [Vercel](https://vercel.com) dengan langkah-langkah berikut:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. Push kode ke GitHub repository
+2. Buka [Vercel](https://vercel.com)
+3. Import repository dari GitHub
+4. Deploy
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Lisensi
+
+[MIT](https://choosealicense.com/licenses/mit/)
