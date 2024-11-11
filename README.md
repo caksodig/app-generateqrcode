@@ -29,8 +29,8 @@ Aplikasi web sederhana untuk menghasilkan QR Code dari URL menggunakan Next.js, 
 1. Clone repository
 
 ```bash
-git clone https://github.com/username/qr-code-generator.git
-cd qr-code-generator
+git https://github.com/caksodig/app-generateqrcode.git
+cd app-generateqrcode
 ```
 
 2. Install dependencies
